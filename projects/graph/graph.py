@@ -46,7 +46,7 @@ class Graph:
         complete = set()
 
         # while the queus isn't empty
-        while q.size() is not 0:
+        while q.size() > 0:
             # dequeue the first item
             currentVert = q.dequeue()
             # if not complete
@@ -89,7 +89,7 @@ class Graph:
                 for neighborV in self.get_neighbors(currentV):
                     s.push(neighborV)
 
-    def dft_recursive(self, starting_vertex):
+    def dft_recursive(self, starting_vertex, visited=set()):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
@@ -101,22 +101,23 @@ class Graph:
         - make visited = None initially
         -If visited is empty , make visited a set
         - if vert has not been visited
-        - print and add it to visited
+        - add it to visited
         - get all the neighbors of the vert
         - go thru all that vert's neighbors using this fn (neighbors, visited)
 
         """
-        visited = None
-
-        if visited == None:
-            visited = set()
-        if starting_vertex not in visited:
-            print(starting_vertex)
-            visited.add(starting_vertex)
-            # get the neighbors
-            neighborV = self.get_neighbors(starting_vertex)
-            for neighbor in neighborV:
-                self.dfs_recursive(neighbor, visited)
+        # add current vertex to visited
+        visited.add(starting_vertex)
+        # print it
+        print(starting_vertex)
+        # put all vertex neighbors in variable
+        nV = self.get_neighbors(starting_vertex)
+        # iterate thru the neighbors
+        for n in nV:
+            if n not in visited:
+                self.dft_recursive(n, visited)
+            else:
+                return
 
     def bfs(self, starting_vertex, destination_vertex):
         """
@@ -224,7 +225,7 @@ class Graph:
                 clone = currentPath.copy()
                 clone.append(n)
                 path.push(clone)
-            return self.dfs_recursive(starting_vertex, destination_vertex, visited, path)
+        return self.dfs_recursive(starting_vertex, destination_vertex, visited, path)
 
 
 if __name__ == '__main__':
