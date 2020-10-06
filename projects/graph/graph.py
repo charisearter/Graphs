@@ -66,6 +66,18 @@ class Graph:
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
+        '''
+        - create an empty stack
+        - create set to store completed nodes
+        - push the starting vertex
+        - while the stack is not emty
+            - pop the first item
+            - if it has not been completed
+            - add the neighbors to completed
+            - print the vertex
+            - next vertex should get all the neighbors of current vert
+                - push next vertex to stack
+        '''
         pass  # TODO
 
     def dft_recursive(self, starting_vertex):
@@ -74,6 +86,17 @@ class Graph:
         beginning from starting_vertex.
 
         This should be done using recursion.
+
+        My notes:
+        - make a variable for an empty set
+        - add the starting vertex to completed
+        - print the current node  (which is starting vertex)
+        - save all the neighbors of teh current vertex in a variable
+        - while there are neighbors
+            - for each of those neighbors
+                - if each of the neighbors have not been completed
+                    - run this fn again with current neighbor
+
         """
         pass  # TODO
 
