@@ -68,17 +68,26 @@ class Graph:
         """
         '''
         - create an empty stack
-        - create set to store completed nodes
+        - create set to store visited nodes
         - push the starting vertex
-        - while the stack is not emty
-            - pop the first item
-            - if it has not been completed
-            - add the neighbors to completed
+        - while the stack size is not emty
+            - pop the first item -> the current vertex
+            - if it has not been visited
+            - add it to visited
             - print the vertex
-            - next vertex should get all the neighbors of current vert
+            - go thru all the neighbors of current vert
                 - push next vertex to stack
         '''
-        pass  # TODO
+        s = Stack()
+        visited = set()
+        s.push(starting_vertex)
+        while s.size() > 0:
+            currentV = s.pop()
+            if currentV not in visited:
+                visited.add(currentV)
+                print(currentV)
+                for neighborV in self.get_neighbors(currentV):
+                    s.push(neighborV)
 
     def dft_recursive(self, starting_vertex):
         """
@@ -89,22 +98,46 @@ class Graph:
 
         My notes:
         - make a variable for an empty set
-        - add the starting vertex to completed
-        - print the current node  (which is starting vertex)
-        - save all the neighbors of teh current vertex in a variable
-        - while there are neighbors
-            - for each of those neighbors
-                - if each of the neighbors have not been completed
-                    - run this fn again with current neighbor
+        - make visited = None initially
+        -If visited is empty , make visited a set
+        - if vert has not been visited
+        - print and add it to visited
+        - get all the neighbors of the vert
+        - go thru all that vert's neighbors using this fn (neighbors, visited)
 
         """
-        pass  # TODO
+        visited = None
+
+        if visited == None:
+            visited = set()
+        if starting_vertex not in visited:
+            print(starting_vertex)
+            visited.add(starting_vertex)
+            # get the neighbors
+            neighborV = self.get_neighbors(starting_vertex)
+            for neighbor in neighborV:
+                self.dfs_recursive(neighbor, visited)
 
     def bfs(self, starting_vertex, destination_vertex):
         """
         Return a list containing the shortest path from
         starting_vertex to destination_vertex in
         breath-first order.
+
+        My Notes:
+        - make visited a set (keep track of all visited vertecies)
+        - make path a list with the starting point inside
+        - make a Queue
+        - Add the path to the queue (enqueque)
+        - while the queue size is not 0
+            - dequeue the first (current) path in the path (first in first out)
+            -current vertex is last in path
+            -if at target, return to current path
+            - if not visited, add to visited
+            - get all the neighbors for current Vert
+            - enqueue a new path for each neighbor to current path 
+                -Note list + [item] returns a new list with the item added to the end without changing the original list (one line way)
+                - using cloning way curretpath[:], append neighbor, enqueue clone
         """
         pass  # TODO
 
