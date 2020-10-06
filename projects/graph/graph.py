@@ -151,9 +151,11 @@ class Graph:
             if currentV not in visited:
                 visited.add(currentV)
             for nV in self.get_neighbors(currentV):
+                # clone currentPath list using slice method
                 clone = currentPath[:]
                 clone.append(nV)
                 q.enqueue(clone)
+                # cloning using list + [item] method
             # q.enqueue(currentPath + [nV]) (indent one more)
 
     def dfs(self, starting_vertex, destination_vertex):
@@ -161,6 +163,21 @@ class Graph:
         Return a list containing a path from
         starting_vertex to destination_vertex in
         depth-first order.
+
+        Notes: 
+        -make a set for visited
+        -make a path list with starting vertex inside
+        -make a stack (last in first out)
+        - push path into the stack
+        - while the size of the stack is greater than 0 (empty)
+            -current path is popped off of the stack
+            - current vertex is the last in current path
+            -if current vertex is the target
+                -return the current path
+            - if the vertex is not has not been visited
+                - add it to visited 
+            - go thru all neighbors for the current vertex
+                - copy the current path and append the neighbor -- (so we won't change original path) -- and push it to the stack
         """
         pass  # TODO
 
@@ -171,6 +188,25 @@ class Graph:
         depth-first order.
 
         This should be done using recursion.
+
+        Notes:
+        - make visited = None initially
+        - make path = None initially
+        -If visited is empty , make visited a set
+        - if vert has not been visited
+            - add it to visited
+        - if path is empty (None)
+            - make path an empty list
+        - make path = a clone of iteself with vertex appeneded and avoid issues
+        - if vertex is target
+            -return to the path
+        - Go thru all the neighbors of the vert
+            if target, append to path
+                - return the path
+            copy the path and append the neighbor
+            then push it to the stack
+        - return this function recursively(start, dest, path, visited)
+
         """
         pass  # TODO
 
