@@ -193,7 +193,7 @@ class Graph:
             for n in self.get_neighbors(currentV):
                 s.push(currentPath + [n])
 
-    def dfs_recursive(self, starting_vertex, destination_vertex):
+    def dfs_recursive(self, starting_vertex, destination_vertex, visited=set(), path=Stack()):
         """
         Return a list containing a path from
         starting_vertex to destination_vertex in
@@ -202,25 +202,29 @@ class Graph:
         This should be done using recursion.
 
         Notes:
-        - make visited = None initially
-        - make path = None initially
-        -If visited is empty , make visited a set
-        - if vert has not been visited
-            - add it to visited
-        - if path is empty (None)
-            - make path an empty list
-        - make path = a clone of iteself with vertex appeneded and avoid issues
-        - if vertex is target
-            -return to the path
-        - Go thru all the neighbors of the vert
-            if target, append to path
-                - return the path
-            copy the path and append the neighbor
-            then push it to the stack
-        - return this function recursively(start, dest, path, visited)
+        - path is Stack()
+        - visited is set()
+        - path is empty initially
 
         """
-        pass  # TODO
+        # path already None because 1st time ran
+        currentPath = path.pop()
+        if currentPath == None:
+            currentPath = [starting_vertex]
+        # if last in path not visited
+        currentV = currentPath[-1]
+        if currentV == destination_vertex:
+            return currentPath
+        if currentV not in visited:
+            visited.add(currentV)
+            for n in self.get_neighbors(currentV):
+                if n == destination_vertex:
+                    currentPath.append(n)
+                    return currentPath
+                clone = currentPath.copy()
+                clone.append(n)
+                path.push(clone)
+            return self.dfs_recursive(starting_vertex, destination_vertex, visited, path)
 
 
 if __name__ == '__main__':
