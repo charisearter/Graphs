@@ -179,7 +179,19 @@ class Graph:
             - go thru all neighbors for the current vertex
                 - copy the current path and append the neighbor -- (so we won't change original path) -- and push it to the stack
         """
-        pass  # TODO
+        visited = set()
+        path = [starting_vertex]
+        s = Stack()
+        s.push(path)
+        while s.size() > 0:
+            currentPath = s.pop()
+            currentV = currentPath[-1]
+            if currentV == destination_vertex:
+                return currentPath
+            if currentV not in visited:
+                visited.add(currentV)
+            for n in self.get_neighbors(currentV):
+                s.push(currentPath + [n])
 
     def dfs_recursive(self, starting_vertex, destination_vertex):
         """
