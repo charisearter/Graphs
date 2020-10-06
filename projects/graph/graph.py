@@ -133,13 +133,28 @@ class Graph:
             - dequeue the first (current) path in the path (first in first out)
             -current vertex is last in path
             -if at target, return to current path
-            - if not visited, add to visited
-            - get all the neighbors for current Vert
+        - if not visited, add to visited
+        - get all the neighbors for current Vert
             - enqueue a new path for each neighbor to current path 
                 -Note list + [item] returns a new list with the item added to the end without changing the original list (one line way)
                 - using cloning way curretpath[:], append neighbor, enqueue clone
         """
-        pass  # TODO
+        visited = set()
+        path = [starting_vertex]
+        q = Queue()
+        q.enqueue(path)
+        while q.size() > 0:
+            currentPath = q.dequeue()
+            currentV = currentPath[-1]
+            if currentV == destination_vertex:
+                return currentPath
+            if currentV not in visited:
+                visited.add(currentV)
+            for nV in self.get_neighbors(currentV):
+                clone = currentPath[:]
+                clone.append(nV)
+                q.enqueue(clone)
+            # q.enqueue(currentPath + [nV]) (indent one more)
 
     def dfs(self, starting_vertex, destination_vertex):
         """
