@@ -3,7 +3,7 @@
 This is a multi-stage project to implement a basic graph class and traversals.
 
 
-## Part 1: Graph Class
+## Part 1: Graph Class [x]
 
 In the file `graph.py`, implement a `Graph` class that supports the API in the example below. In particular, this means there should be a field `vertices` that
 contains a dictionary mapping vertex labels to edges. For example:
@@ -45,28 +45,28 @@ to your graph to ensure that edges to nonexistent vertices are rejected.
 graph.add_edge('0', '4')  # No '4' vertex, should raise an Exception!
 ```
 
-## Part 2: Implement Breadth-First Traversal
+## Part 2: Implement Breadth-First Traversal []
 
 Write a function within your Graph class that takes takes a starting node as an argument, then performs BFT. Your function should print the resulting nodes in the order they were visited. Note that there are multiple valid paths that may be printed.
 
-## Part 3: Implement Depth-First Traversal with a Stack
+## Part 3: Implement Depth-First Traversal with a Stack []
 
 Write a function within your Graph class that takes takes a starting node as an argument, then performs DFT. Your function should print the resulting nodes in the order they were visited. Note that there are multiple valid paths that may be printed.
 
-## Part 4: Implement Depth-First Traversal using Recursion
+## Part 4: Implement Depth-First Traversal using Recursion []
 
 Write a function within your Graph class that takes takes a starting node as an argument, then performs DFT using recursion. Your function should print the resulting nodes in the order they were visited. Note that there are multiple valid paths that may be printed.
 
-## Part 5: Implement Breadth-First Search
+## Part 5: Implement Breadth-First Search []
 
 Write a function within your Graph class that takes takes a starting node and a destination node as an argument, then performs BFS. Your function should return the shortest path from the start node to the destination node. Note that there are multiple valid paths.
 
-## Part 6: Implement Depth-First Search
+## Part 6: Implement Depth-First Search []
 
 Write a function within your Graph class that takes takes a starting node and a destination node as an argument, then performs DFS. Your function should return a valid path (not necessarily the shortest) from the start node to the destination node. Note that there are multiple valid paths.
 
 
-## Part 7: Implement Depth-First Search using Recursion
+## Part 7: Implement Depth-First Search using Recursion []
 
 Write a function within your Graph class that takes takes a starting node and a destination node as an argument, then performs DFS using recursion. Your function should return a valid path (not necessarily the shortest) from the start node to the destination node. Note that there are multiple valid paths.
 

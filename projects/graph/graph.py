@@ -3,36 +3,63 @@ Simple graph implementation
 """
 from util import Stack, Queue  # These may come in handy
 
+
 class Graph:
 
     """Represent a graph as a dictionary of vertices mapping labels to edges."""
+
     def __init__(self):
-        self.vertices = {}
+        self.vertices = {}  # empty dicitonary for verticies
 
     def add_vertex(self, vertex_id):
         """
         Add a vertex to the graph.
         """
-        pass  # TODO
+        self.vertices[vertex_id] = set()
 
     def add_edge(self, v1, v2):
         """
         Add a directed edge to the graph.
         """
-        pass  # TODO
+        # if there is a v1 and v2
+        if v1 in self.vertices and v2 in self.vertices:
+            # connect them (add edge)
+            self.vertices[v1].add(v2)
 
     def get_neighbors(self, vertex_id):
         """
         Get all neighbors (edges) of a vertex.
         """
-        pass  # TODO
+        return self.vertices[vertex_id]
 
     def bft(self, starting_vertex):
         """
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # make an empty queue
+        q = Queue()
+
+        # enque the starting vertex
+        q.enqueue(starting_vertex)
+        # variable for vertices already completed
+        complete = set()
+
+        # while the queus isn't empty
+        while q.size() is not 0:
+            # dequeue the first item
+            currentVert = q.dequeue()
+            # if not complete
+            if currentVert not in complete:
+                # print it
+                print(currentVert)
+                # add to complete
+                complete.add(currentVert)
+                # add neighbors of currentVert
+                for nextVert in self.get_neighbors(currentVert):
+                    if nextVert not in complete:
+                        # add nextVert to queue
+                        q.enqueue(nextVert)
 
     def dft(self, starting_vertex):
         """
@@ -75,6 +102,7 @@ class Graph:
         This should be done using recursion.
         """
         pass  # TODO
+
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
