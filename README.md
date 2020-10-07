@@ -11,7 +11,7 @@
 
 ## Projects
 
-### Day 1 [ ]
+### Day 1 [x]
 * [Graph Traversal and Search](projects/graph)
 
 ### Day 2 [ ]
