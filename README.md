@@ -14,7 +14,7 @@
 ### Day 1 [x]
 * [Graph Traversal and Search](projects/graph)
 
-### Day 2 [ ]
+### Day 2 [x]
 * [Earliest Ancestor](projects/ancestor)
 
 ### Day 3 [ ]
