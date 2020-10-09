@@ -91,3 +91,5 @@ def earliest_ancestor(ancestors, starting_node):
         return -1  # return -1
     else:  # otherwise
         return paths[0][-1]  # return last ancestor in the path
+    # path[0] --> index 0 of paths 
+    # path[-1] --> very last index in array

@@ -1,6 +1,7 @@
 from util import Stack, Queue
 import random
 import math
+import time
 
 
 class User:
@@ -94,9 +95,39 @@ class SocialGraph:
         return visited
 
 
+# if __name__ == '__main__':
+#     sg = SocialGraph()
+#     sg.populate_graph(10, 2)
+#     print('Friends: ', sg.friendships)
+#     connections = sg.get_all_social_paths(1)
+#     print('Paths: ', connections)
 if __name__ == '__main__':
     sg = SocialGraph()
-    sg.populate_graph(10, 2)
-    print('Friends: ', sg.friendships)
+    start_time = time.time()
+    sg.populate_graph(1000, 5)
+    end_time = time.time()
+    print(f"runtime: {end_time - start_time} seconds")
     connections = sg.get_all_social_paths(1)
-    print('Paths: ', connections)
+    # print(sg.friendships)
+    # print(connections)
+    total = 0
+    for user_id in connections:
+        total += len(connections[user_id]) - 1
+    print(len(connections))
+    print(total / len(connections))
+    total_connections = 0
+    total_degrees = 0
+    iterations = 10
+    for i in range(0, iterations):
+        sg.populate_graph(1000, 5)
+        connections = sg.get_all_social_paths(1)
+        total = 0
+        for user_id in connections:
+            total += len(connections[user_id]) - 1
+        total_connections += len(connections)
+        total_degrees += total / len(connections)
+        print("-----")
+        print(f"Friends in network: {len(connections)}")
+        print(f"Avg degrees: {total / len(connections)}")
+    print(total_connections / iterations)
+    print(total_degrees / iterations)
